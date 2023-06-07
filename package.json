@@ -1,0 +1,33 @@
+{
+  "name": "hello-react",
+  "version": "1.0.0",
+  "description": "this is hello-react by Shruti Singla",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shruti-singla/hello-react.git"
+  },
+  "keywords": [
+    "react",
+    "shruti",
+    "singla",
+    "hello",
+    "react"
+  ],
+  "author": "Shruti Singla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shruti-singla/hello-react/issues"
+  },
+  "homepage": "https://github.com/shruti-singla/hello-react#readme",
+  "devDependencies": {
+    "parcel": "^2.9.1",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
