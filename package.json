@@ -3,19 +3,15 @@
   "version": "1.0.0",
   "description": "this is hello-react by Shruti Singla",
   "scripts": {
+    "start":"parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shruti-singla/hello-react.git"
   },
-  "keywords": [
-    "react",
-    "shruti",
-    "singla",
-    "hello",
-    "react"
-  ],
+  "keywords": [],
   "author": "Shruti Singla",
   "license": "ISC",
   "bugs": {
