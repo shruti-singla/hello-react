@@ -5,11 +5,14 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [restrauntList, setRestrauntList] = useState([]);
+  const [filterdList, setfilterdList] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+  console.log("body rendered");
 
   useEffect(() => {
     fetchData();
   }, []);
-  
 
   const fetchData = async () => {
     const data = await fetch(
@@ -21,31 +24,51 @@ const Body = () => {
     setRestrauntList(
       json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setfilterdList(json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
 
-  
-
-  if (restrauntList.length === 0) {
-    return <Shimmer />;
-  }
-
-  return (
+  return restrauntList.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="searchBox"
+            value={searchText}
+            onChange={(event) => {
+              setSearchText(event.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              //filter logic
+
+              const filteredRestaurant = restrauntList.filter((res) => {
+                return res.info.name.toLowerCase().includes(searchText.toLowerCase());
+              });
+              console.log(searchText);
+              setfilterdList(filteredRestaurant);
+            }}
+          >
+            search
+          </button>
+        </div>
         <div
           className="filter-btn"
           onClick={() => {
-            const filterdList = restrauntList.filter(
+            const filterRestaurant = restrauntList.filter(
               (res) => res.info.avgRating > 4
             );
-            setRestrauntList(filterdList);
+            setfilterdList(filterRestaurant);
           }}
         >
           Top Rated Restraunt
         </div>
       </div>
       <div className="res-container">
-        {restrauntList.map((Restraunt) => (
+        {filterdList.map((Restraunt) => (
           <RestrauntCard key={Restraunt.info.id} resdata={Restraunt} />
         ))}
       </div>
