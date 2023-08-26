@@ -1,7 +1,7 @@
 import RestrauntCard from "./RestrauntCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
-//import resList from "../utils/mockData";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [restrauntList, setRestrauntList] = useState([]);
@@ -24,7 +24,9 @@ const Body = () => {
     setRestrauntList(
       json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    setfilterdList(json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setfilterdList(
+      json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   return restrauntList.length === 0 ? (
@@ -46,7 +48,9 @@ const Body = () => {
               //filter logic
 
               const filteredRestaurant = restrauntList.filter((res) => {
-                return res.info.name.toLowerCase().includes(searchText.toLowerCase());
+                return res.info.name
+                  .toLowerCase()
+                  .includes(searchText.toLowerCase());
               });
               console.log(searchText);
               setfilterdList(filteredRestaurant);
@@ -69,7 +73,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filterdList.map((Restraunt) => (
-          <RestrauntCard key={Restraunt.info.id} resdata={Restraunt} />
+          <Link key={Restraunt.info.id} to = {"/Restaurant/" + Restraunt.info.id}>
+            <RestrauntCard resdata={Restraunt} />
+          </Link>
         ))}
       </div>
     </div>
