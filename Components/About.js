@@ -1,11 +1,11 @@
-import User from "./user";
+import UserFunction from "./UserFunction";
 import UserClass from "./UserClass";
 
 const About = () => {
   return (
     <div>
       <h1>This is about us page</h1>
-      {/* <User name = {"Shruti...." }location = {"Delhi .. "} /> */}
+      {/* <UserFunction name = {"Shruti......    " }location = {"Delhi"} /> */}
       <UserClass name = {"Shruti..  "} location = {"Delhi .. "}  />
     </div>
   );

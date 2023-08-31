@@ -6,9 +6,9 @@ class UserClass extends React.Component {
 
     this.state = {
       userInfo: {
-        name : "dummy name",
+        name : "Please remove the commits of api call in code in userClass.js component file",
         location : "dummy loc",
-        avatar_url : "dummy",
+        avatar_url : "https://as1.ftcdn.net/v2/jpg/04/34/72/82/1000_F_434728286_OWQQvAFoXZLdGHlObozsolNeuSxhpr84.jpg",
         bio:"dummy bio",
       }
      
@@ -28,7 +28,7 @@ class UserClass extends React.Component {
     const { name, location, avatar_url, bio } = this.state.userInfo;
     return (
       <div className="user-class">
-        <img src={avatar_url} />
+        <img className = "image" src={avatar_url} />
         <h2>Name : {name}</h2>
         <h2>location : {location}</h2>
         <h4>bio : {bio}</h4>

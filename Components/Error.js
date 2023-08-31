@@ -6,7 +6,7 @@ const Error = () => {
     console.log(err);
   return (
     <div>
-      <h1>OOps!</h1>
+      <h1>OOps! </h1>
     </div>
   );
 };

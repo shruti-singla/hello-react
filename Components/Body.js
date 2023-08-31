@@ -2,11 +2,14 @@ import RestrauntCard from "./RestrauntCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { RES_API } from "../utils/constants";
+import useStatus from "../utils/useStatus";
 
 const Body = () => {
   const [restrauntList, setRestrauntList] = useState([]);
   const [filterdList, setfilterdList] = useState([]);
   const [searchText, setSearchText] = useState("");
+  // const [isLoading, setIsLoading] = useState(false);
 
   console.log("body rendered");
 
@@ -15,21 +18,27 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=29.39479305773142&lng=76.97510082274675&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    // setIsLoading(true);
+    const data = await fetch(RES_API);
     const json = await data.json();
 
-    //console.log(json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     setRestrauntList(
       json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setfilterdList(
       json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    // setIsLoading(false);
   };
 
-  return restrauntList.length === 0 ? (
+  const status = useStatus();
+  if(status === false){
+    return (
+      <h1>Looks like you're offline!! Please check your internet connection!!</h1>
+    )
+  }
+
+  return (restrauntList?.length===0) ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -72,7 +81,7 @@ const Body = () => {
         </div>
       </div>
       <div className="res-container">
-        {filterdList.map((Restraunt) => (
+        {filterdList?.map((Restraunt) => (
           <Link key={Restraunt.info.id} to = {"/Restaurant/" + Restraunt.info.id}>
             <RestrauntCard resdata={Restraunt} />
           </Link>
