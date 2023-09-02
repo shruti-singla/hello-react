@@ -2,7 +2,7 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./Components/Header";
 import Body from "./Components/Body";
-import About from "./Components/About";
+// import About from "./Components/About";
 import Contact from "./Components/Contact";
 import Error from "./Components/Error";
 import RestaurantMenu from "./Components/RestaurantMenu";
@@ -20,6 +20,7 @@ const AppLayout = () => {
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const Grocery = lazy(() => import("./Components/Grocery"));
+const About = lazy(() => import("./Components/About"));
 
 const appRouter = createBrowserRouter([
   {
@@ -27,7 +28,11 @@ const appRouter = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { path: "/", element: <Body /> },
-      { path: "/about", element: <About /> },
+      { path: "/about", element: (
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <About />
+        </Suspense>
+      ), },
       { path: "/contact", element: <Contact /> },
       { path: "/Restaurant/:resID", element: <RestaurantMenu /> },
       {

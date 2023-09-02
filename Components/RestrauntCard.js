@@ -6,15 +6,15 @@ const RestrauntCard = (props) => {
     resdata?.info;
   const { deliveryTime } = resdata?.info?.sla;
   return (
-    <div className="res-card">
+    <div className="res-card w-[250px] rounded-lg m-4 p-4 bg-gray-100 hover:bg-gray-200 h-[400px]">
       <div className="res-img">
         <img
           alt="no"
-          className="food-image"
+          className="food-image rounded-lg w-[218px] h-40"
           src={CDN_URL + cloudinaryImageId}
         />
       </div>
-      <h3 className="res-name">{name}</h3>
+      <h3 className="font-bold py-2 text-lg">{name}</h3>
       <div className="cuisne">
         <h4>{cuisines.join(", ")}</h4>
       </div>

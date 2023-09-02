@@ -32,27 +32,30 @@ const Body = () => {
   };
 
   const status = useStatus();
-  if(status === false){
+  if (status === false) {
     return (
-      <h1>Looks like you're offline!! Please check your internet connection!!</h1>
-    )
+      <h1>
+        Looks like you're offline!! Please check your internet connection!!
+      </h1>
+    );
   }
 
-  return (restrauntList?.length===0) ? (
+  return restrauntList?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="filter">
-        <div className="search">
+      <div className="filter flex">
+        <div className="search m-4 p-4 ">
           <input
             type="text"
-            className="searchBox"
+            className="searchBox border border-solid border-black"
             value={searchText}
             onChange={(event) => {
               setSearchText(event.target.value);
             }}
           />
           <button
+            className="px-4 py-2 m-4 mr-0 bg-green-100 rounded-lg border border-green-400 hover:bg-green-200"
             onClick={() => {
               //filter logic
 
@@ -68,21 +71,23 @@ const Body = () => {
             search
           </button>
         </div>
-        <div
-          className="filter-btn"
-          onClick={() => {
-            const filterRestaurant = restrauntList.filter(
-              (res) => res.info.avgRating > 4
-            );
-            setfilterdList(filterRestaurant);
-          }}
-        >
-          Top Rated Restraunt
+        <div className="m-4 p-4 flex items-center">
+          <button
+            className="filter-btn px-4 py-2 ml-0 bg-green-100 rounded-lg border border-green-400 hover:bg-green-200"
+            onClick={() => {
+              const filterRestaurant = restrauntList.filter(
+                (res) => res.info.avgRating > 4
+              );
+              setfilterdList(filterRestaurant);
+            }}
+          >
+            Top Rated Restraunt
+          </button>
         </div>
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {filterdList?.map((Restraunt) => (
-          <Link key={Restraunt.info.id} to = {"/Restaurant/" + Restraunt.info.id}>
+          <Link key={Restraunt.info.id} to={"/Restaurant/" + Restraunt.info.id}>
             <RestrauntCard resdata={Restraunt} />
           </Link>
         ))}
