@@ -1,4 +1,4 @@
-import RestrauntCard from "./RestrauntCard";
+import RestrauntCard, { withPromotedLabel } from "./RestrauntCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ const Body = () => {
   const [restrauntList, setRestrauntList] = useState([]);
   const [filterdList, setfilterdList] = useState([]);
   const [searchText, setSearchText] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
+  const RestrauntCardPromted = withPromotedLabel(RestrauntCard);
 
   console.log("body rendered");
 
@@ -18,7 +18,6 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    // setIsLoading(true);
     const data = await fetch(RES_API);
     const json = await data.json();
 
@@ -28,7 +27,6 @@ const Body = () => {
     setfilterdList(
       json.data.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    // setIsLoading(false);
   };
 
   const status = useStatus();
@@ -88,7 +86,11 @@ const Body = () => {
       <div className="res-container flex flex-wrap">
         {filterdList?.map((Restraunt) => (
           <Link key={Restraunt.info.id} to={"/Restaurant/" + Restraunt.info.id}>
-            <RestrauntCard resdata={Restraunt} />
+            {Restraunt.info.avgRating > 4 ? (
+              <RestrauntCardPromted resdata={Restraunt} />
+            ) : (
+              <RestrauntCard resdata={Restraunt} />
+            )}
           </Link>
         ))}
       </div>

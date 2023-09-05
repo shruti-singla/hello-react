@@ -6,7 +6,7 @@ const RestrauntCard = (props) => {
     resdata?.info;
   const { deliveryTime } = resdata?.info?.sla;
   return (
-    <div className="res-card w-[250px] rounded-lg m-4 p-4 bg-gray-100 hover:bg-gray-200 h-[400px]">
+    <div className="res-card w-[250px]  rounded-lg m-4 p-4 bg-gray-100 hover:bg-gray-200 h-[400px]">
       <div className="res-img">
         <img
           alt="no"
@@ -30,5 +30,16 @@ const RestrauntCard = (props) => {
     </div>
   );
 };
+
+export const withPromotedLabel = (RestrauntCard) => {
+  return (props) =>{
+    return(
+      <div>
+        <label className="absolute m-2 p-2 bg-black text-white rounded-lg">Promoted</label>
+        <RestrauntCard {...props} />
+      </div>
+    )
+  }
+}
 
 export default RestrauntCard;
