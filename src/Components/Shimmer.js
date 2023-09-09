@@ -1,19 +1,19 @@
 const Shimmer = () => {
 
     return(
-        <div className="shimmer-container">
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
-            <div className="shimmer-card"></div>
+        <div className="flex flex-wrap">
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
+            <div className="p-1 m-4 w-48 h-96 bg-gray-100"></div>
         </div>
 
     );
@@ -21,3 +21,4 @@ const Shimmer = () => {
 }
 
 export default Shimmer;
+
