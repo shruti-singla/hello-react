@@ -11,6 +11,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const RestrauntCardPromted = withPromotedLabel(RestrauntCard);
 
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -20,12 +21,14 @@ const Body = () => {
     const json = await data.json();
 
     setRestrauntList(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setfilterdList(
-      json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+
   };
+ 
 
   const status = useStatus();
   if (status === false) {
